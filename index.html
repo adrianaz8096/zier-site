@@ -274,6 +274,112 @@
   .final-cta .btn-primary{color:var(--sage-700);}
   .final-cta .btn-secondary{color:var(--cream); border-color:var(--gold-light);}
 
+  /* ---------- CONTATO ---------- */
+  .contato{background:var(--sage-100); padding:5.5rem 6vw;}
+  .contato-inner{max-width:760px; margin:0 auto;}
+  .contato-head{text-align:center; margin-bottom:2.8rem;}
+  .contato-head h2{font-size:clamp(1.8rem,3vw,2.4rem); margin-top:0.6rem;}
+  .contato-head p{margin-top:0.9rem; font-size:0.98rem; opacity:0.82; max-width:46ch; margin-left:auto; margin-right:auto;}
+
+  .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;}
+  .campo{display:flex; flex-direction:column;}
+  .campo.largo{grid-column:1 / -1;}
+  .campo label{
+    font-size:0.72rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--sage-700); margin-bottom:0.5rem;
+  }
+  .campo label .opcional{
+    font-weight:400; letter-spacing:0.08em; text-transform:none;
+    color:var(--gold); margin-left:0.4rem; font-size:0.72rem;
+  }
+  .campo input, .campo textarea{
+    font-family:'Karla', sans-serif;
+    font-size:0.98rem;
+    color:var(--ink);
+    background:var(--cream);
+    border:1px solid rgba(95,142,118,0.28);
+    border-radius:3px;
+    padding:0.85rem 1rem;
+    width:100%;
+    transition:border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .campo textarea{resize:vertical; min-height:140px; line-height:1.55;}
+  .campo input::placeholder, .campo textarea::placeholder{color:rgba(36,53,46,0.38);}
+  .campo input:focus, .campo textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(176,141,87,0.16);
+  }
+  .campo input[aria-invalid="true"], .campo textarea[aria-invalid="true"]{
+    border-color:#B3503C;
+    box-shadow:0 0 0 3px rgba(179,80,60,0.12);
+  }
+  .erro{
+    font-size:0.8rem; color:#B3503C; margin-top:0.4rem; min-height:1.1rem;
+  }
+
+  .form-acoes{
+    grid-column:1 / -1;
+    display:flex; align-items:center; gap:1.4rem; flex-wrap:wrap;
+    margin-top:0.4rem;
+  }
+  .btn-solid{
+    font-family:'Karla', sans-serif;
+    background:var(--sage-700);
+    color:var(--cream);
+    font-weight:700;
+    font-size:0.85rem;
+    letter-spacing:0.03em;
+    padding:0.95rem 2.2rem;
+    border:1px solid var(--gold);
+    border-radius:3px;
+    box-shadow:inset 0 0 0 3px var(--sage-700), inset 0 0 0 4px rgba(217,193,147,0.5);
+    cursor:pointer;
+    transition:background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .btn-solid:hover{
+    background:var(--gold);
+    transform:translateY(-1px);
+    box-shadow:inset 0 0 0 3px var(--gold), inset 0 0 0 4px rgba(251,251,242,0.6);
+  }
+  .btn-solid:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  .btn-solid:disabled{opacity:0.6; cursor:wait; transform:none;}
+  #erro-envio{flex-basis:100%; margin-top:0;}
+  .form-nota{font-size:0.8rem; opacity:0.62;}
+
+  .form-sucesso{
+    background:var(--cream);
+    border-top:2px solid var(--gold);
+    border-radius:4px;
+    padding:2.6rem 2rem;
+    text-align:center;
+  }
+  .form-sucesso .selo{
+    width:44px; height:44px; margin:0 auto 1.1rem;
+    border:1px solid var(--gold); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .form-sucesso h3{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:400;
+    font-size:1.5rem; margin-bottom:0.6rem;
+  }
+  .form-sucesso p{font-size:0.96rem; opacity:0.82; max-width:42ch; margin:0 auto;}
+  .form-sucesso button{
+    margin-top:1.6rem;
+    background:none; border:none; cursor:pointer;
+    font-family:'Karla', sans-serif; font-size:0.82rem; font-weight:700; letter-spacing:0.04em;
+    color:var(--sage-700); border-bottom:1px solid var(--gold); padding-bottom:2px;
+  }
+  .form-sucesso button:hover{color:var(--gold);}
+  [hidden]{display:none !important;}
+
+  @media (max-width:640px){
+    .form-grid{grid-template-columns:1fr;}
+    .btn-solid{width:100%;}
+    .form-acoes{gap:0.9rem;}
+    .form-nota{text-align:center; width:100%;}
+  }
+
   /* ---------- RODAPÉ ---------- */
   footer{background:var(--ivory); text-align:center; padding:3rem 6vw 2.4rem;}
   footer .wordmark{font-family:'Fraunces',serif; font-size:1rem; letter-spacing:0.02em;}
@@ -481,10 +587,61 @@
     </div>
   </section>
 
+  <section class="contato" id="contato">
+    <div class="contato-inner reveal">
+      <div class="contato-head">
+        <p class="eyebrow">Fale com a ZIER</p>
+        <h2>Ficou com alguma dúvida?</h2>
+        <p>Escreve aqui que eu respondo pessoalmente. Se preferir conversa na hora, o WhatsApp está ali em cima.</p>
+      </div>
+
+      <div id="form-contato" class="form-grid">
+        <div class="campo">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Como posso te chamar">
+          <p class="erro" id="erro-nome" role="alert"></p>
+        </div>
+
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="seunome@email.com">
+          <p class="erro" id="erro-email" role="alert"></p>
+        </div>
+
+        <div class="campo largo">
+          <label for="telefone">Telefone <span class="opcional">(opcional)</span></label>
+          <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel" placeholder="(11) 90000-0000">
+          <p class="erro" id="erro-telefone" role="alert"></p>
+        </div>
+
+        <div class="campo largo">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Conta o que você procura: peça, ocasião, cor preferida..."></textarea>
+          <p class="erro" id="erro-mensagem" role="alert"></p>
+        </div>
+
+        <div class="form-acoes">
+          <button type="button" class="btn-solid" id="btn-enviar">Enviar mensagem</button>
+          <span class="form-nota">Respondo em até 1 dia útil.</span>
+          <p class="erro" id="erro-envio" role="alert"></p>
+        </div>
+      </div>
+
+      <div id="sucesso-contato" class="form-sucesso" hidden>
+        <div class="selo">
+          <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><path d="M1 7.2 L7 13 L19 1" fill="none" stroke="#B08D57" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Mensagem enviada</h3>
+        <p id="sucesso-texto">Obrigada pelo contato. Já recebi sua mensagem e respondo em até 1 dia útil.</p>
+        <button type="button" id="btn-nova">Enviar outra mensagem</button>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="wordmark">ZIER</div>
     <p class="tagline">Acessórios</p>
-    <p class="meta">Envio para todo o Brasil · <a href="https://www.zieracessorios.com.br/" target="_blank" rel="noopener">zieracessorios.com.br</a> · <a href="https://instagram.com/zieracessorios" target="_blank" rel="noopener">@zieracessorios</a></p>
+    <p class="meta">Envio para todo o Brasil · <a href="#contato">Fale comigo</a> · <a href="https://www.zieracessorios.com.br/" target="_blank" rel="noopener">zieracessorios.com.br</a> · <a href="https://instagram.com/zieracessorios" target="_blank" rel="noopener">@zieracessorios</a></p>
   </footer>
 
   <script>
@@ -499,6 +656,142 @@
     } else {
       items.forEach(i=>i.classList.add('is-visible'));
     }
+
+    (function(){
+      var form = document.getElementById('form-contato');
+      if(!form) return;
+
+      var sucesso = document.getElementById('sucesso-contato');
+      var sucessoTexto = document.getElementById('sucesso-texto');
+      var campos = {
+        nome: {el: document.getElementById('nome'), erro: document.getElementById('erro-nome'), obrigatorio: true},
+        email: {el: document.getElementById('email'), erro: document.getElementById('erro-email'), obrigatorio: true},
+        telefone: {el: document.getElementById('telefone'), erro: document.getElementById('erro-telefone'), obrigatorio: false},
+        mensagem: {el: document.getElementById('mensagem'), erro: document.getElementById('erro-mensagem'), obrigatorio: true}
+      };
+
+      var RE_EMAIL = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+
+      function marcar(campo, msg){
+        campo.erro.textContent = msg || '';
+        if(msg){ campo.el.setAttribute('aria-invalid','true'); }
+        else { campo.el.removeAttribute('aria-invalid'); }
+      }
+
+      function validaCampo(nome){
+        var c = campos[nome];
+        var v = c.el.value.trim();
+
+        if(nome === 'nome'){
+          if(!v) return marcar(c,'Escreve seu nome, por favor.'), false;
+          if(v.length < 2) return marcar(c,'Nome muito curto.'), false;
+        }
+
+        if(nome === 'email'){
+          if(!v) return marcar(c,'Preciso do seu e-mail para responder.'), false;
+          if(!RE_EMAIL.test(v)) return marcar(c,'Esse e-mail parece incompleto. Confere o formato: nome@dominio.com'), false;
+        }
+
+        if(nome === 'telefone'){
+          if(v){
+            var digitos = v.replace(/\D/g,'');
+            if(digitos.length < 10 || digitos.length > 11){
+              return marcar(c,'Telefone com DDD, 10 ou 11 dígitos.'), false;
+            }
+          }
+        }
+
+        if(nome === 'mensagem'){
+          if(!v) return marcar(c,'Conta o que você precisa.'), false;
+          if(v.length < 5) return marcar(c,'Escreve um pouquinho mais.'), false;
+        }
+
+        marcar(c, '');
+        return true;
+      }
+
+      Object.keys(campos).forEach(function(nome){
+        var c = campos[nome];
+        c.el.addEventListener('blur', function(){ validaCampo(nome); });
+        c.el.addEventListener('input', function(){
+          if(c.el.getAttribute('aria-invalid') === 'true') validaCampo(nome);
+        });
+        if(nome !== 'mensagem'){
+          c.el.addEventListener('keydown', function(e){
+            if(e.key === 'Enter'){ e.preventDefault(); enviar(); }
+          });
+        }
+      });
+
+      // Cole aqui a URL /exec da implantação do Apps Script.
+      // Enquanto estiver vazia, o formulário só simula o envio.
+      var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxi1XsdCjQUFuchuM1OBtO38MLn0vNprX7SfGHZt77PNLeYTtoy-ybLJM8YooyNAqPkKQ/exec';
+
+      var btn = document.getElementById('btn-enviar');
+      var falha = document.getElementById('erro-envio');
+      var enviando = false;
+
+      function mostraSucesso(){
+        var nome = campos.nome.el.value.trim().split(' ')[0];
+        sucessoTexto.textContent = 'Obrigada pelo contato, ' + nome + '. Já recebi sua mensagem e respondo em até 1 dia útil.';
+        form.hidden = true;
+        sucesso.hidden = false;
+        sucesso.setAttribute('tabindex','-1');
+        sucesso.focus();
+      }
+
+      function enviar(){
+        if(enviando) return;
+
+        var ordem = ['nome','email','telefone','mensagem'];
+        var ok = true, primeiroErro = null;
+
+        ordem.forEach(function(nome){
+          var valido = validaCampo(nome);
+          if(!valido){ ok = false; if(!primeiroErro) primeiroErro = campos[nome].el; }
+        });
+
+        if(!ok){ primeiroErro.focus(); return; }
+
+        falha.textContent = '';
+
+        if(!ENDPOINT){ mostraSucesso(); return; }
+
+        enviando = true;
+        btn.disabled = true;
+        btn.textContent = 'Enviando...';
+
+        var dados = new FormData();
+        ordem.forEach(function(nome){ dados.append(nome, campos[nome].el.value.trim()); });
+
+        fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: dados })
+          .then(function(){ mostraSucesso(); })
+          .catch(function(){
+            falha.textContent = 'Não consegui enviar agora. Tenta de novo ou me chama no WhatsApp.';
+          })
+          .then(function(){
+            enviando = false;
+            btn.disabled = false;
+            btn.textContent = 'Enviar mensagem';
+          });
+      }
+
+      document.getElementById('btn-enviar').addEventListener('click', enviar);
+
+      document.getElementById('btn-nova').addEventListener('click', function(){
+        ordemLimpa();
+        sucesso.hidden = true;
+        form.hidden = false;
+        campos.nome.el.focus();
+      });
+
+      function ordemLimpa(){
+        Object.keys(campos).forEach(function(nome){
+          campos[nome].el.value = '';
+          marcar(campos[nome], '');
+        });
+      }
+    })();
   </script>
 
 </body>
